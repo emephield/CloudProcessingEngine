@@ -115,7 +115,12 @@ class ActivityPoller
             $this->cpeLogger->log_out("ERROR", basename(__FILE__),
                 "Unable to poll activity tasks! " . $e->getMessage());
         }
-        
+        catch (Exception $e)
+        {
+            $this->cpeLogger->log_out("ERROR", basename(__FILE__),
+                "Uncatched error happend : ".$e->getMessage());            
+        }
+
         return true;
     }
 
